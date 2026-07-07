@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Biểu trưng Trà Thất Lưu Gia">
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#8f6f2c" stroke-width="2"/>
+  <circle cx="60" cy="60" r="48" fill="none" stroke="#8f6f2c" stroke-width="0.75" opacity="0.55"/>
+  <path d="M35 82 Q60 76 85 82" fill="none" stroke="#8f6f2c" stroke-width="1.25" opacity="0.7"/>
+  <path d="M60 78 C48 78 40 66 44 52 C47 40 58 32 66 34 C78 37 82 52 74 65 C70 71 65 76 60 78 Z" fill="#7a2e1d"/>
+  <path d="M60 76 C58 64 58 50 63 38" fill="none" stroke="#fbf8ef" stroke-width="1.1" opacity="0.85"/>
+  <path d="M52 32 Q46 22 54 14" fill="none" stroke="#8f6f2c" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M68 32 Q74 22 66 12" fill="none" stroke="#8f6f2c" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
