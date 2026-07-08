@@ -186,6 +186,36 @@ p{margin:0;}
 .signup-form button{background:var(--accent-light);border:none;color:#1c1c1c;font-weight:700;padding:.7em 1.1em;border-radius:var(--radius);cursor:pointer;}
 .signup-note{font-size:.76rem;color:#A79D8B;margin-top:.6rem;}
 .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.7rem;padding-top:1.6rem;border-top:1px solid #4A453A;font-size:.78rem;color:#A79D8B;}
+.footer-bottom a{color:#A79D8B;text-decoration:underline;text-underline-offset:.2em;}
+.footer-bottom a:hover{color:#fff;}
+
+/* ---------- real photography ---------- */
+.region-gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:.9rem;}
+.region-photo{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.region-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.region-photo.tall{grid-row:1/3;}
+.region-photo figcaption{
+  position:absolute;left:0;right:0;bottom:0;margin:0;padding:1rem .9rem .8rem;
+  background:linear-gradient(to top, rgba(20,15,9,.75), transparent);
+  color:#F3EEDF;font-size:.82rem;font-weight:600;
+}
+.region-photo figcaption span{display:block;font-weight:400;font-size:.72rem;color:#D8CFBB;margin-top:.15rem;}
+@media (max-width:820px){
+  .region-gallery{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .region-photo.tall{grid-row:auto;}
+  .region-photo{aspect-ratio:4/3;}
+}
+@media (max-width:520px){ .region-gallery{grid-template-columns:1fr;} }
+
+.product-media.has-photo{background:#2c2117;}
+.product-media.has-photo img{width:100%;height:100%;object-fit:cover;}
+
+.process-art.has-photo{overflow:hidden;}
+.process-art.has-photo img{width:100%;height:100%;object-fit:cover;}
+
+.origin-art.has-photo{background-size:cover;background-position:center;}
+
+.photo-credit-line{font-size:.72rem;color:var(--text-soft);margin-top:.4rem;}
 
 /* ---------- chat launcher ---------- */
 .chat-launcher{position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem;}
