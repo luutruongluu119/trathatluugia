@@ -369,6 +369,8 @@
   .contact-list{list-style:none;margin:1.6rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.1rem;}
   .contact-list li{display:flex;gap:1rem;font-size:.95rem;}
   .contact-list b{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);margin-bottom:.2rem;}
+  .contact-list a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:.2em;}
+  .contact-list a:hover{color:var(--liquor);text-decoration-color:var(--liquor);}
   .placeholder-note{margin-top:1.4rem;font-size:.78rem;color:var(--ink-soft);font-style:italic;}
   .map-plate{
     border:1px solid var(--line);background:var(--paper-card);padding:2rem;min-height:230px;
@@ -391,6 +393,41 @@
   .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;color:color-mix(in srgb, var(--ground) 60%, transparent);}
   @media (max-width:760px){ .footer-grid{grid-template-columns:1fr 1fr;} }
   @media (max-width:520px){ .footer-grid{grid-template-columns:1fr;} }
+
+  /* ---------- chat launcher ---------- */
+  .chat-launcher{position:fixed;right:1.4rem;bottom:1.4rem;z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem;}
+  .chat-options{display:flex;flex-direction:column;align-items:flex-end;gap:.65rem;margin-bottom:.2rem;}
+  .chat-btn{
+    display:flex;align-items:center;gap:.6rem;
+    background:var(--paper-card);border:1px solid var(--line);
+    padding:.5rem .9rem .5rem .5rem;border-radius:999px;
+    text-decoration:none;color:var(--ink);font-size:.85rem;font-weight:600;
+    box-shadow:var(--shadow);
+    opacity:0;transform:translateY(8px) scale(.94);pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .chat-launcher.is-open .chat-btn{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+  .chat-launcher.is-open .chat-messenger{transition-delay:.03s;}
+  .chat-btn .chat-icon{width:2.1rem;height:2.1rem;border-radius:50%;flex-shrink:0;}
+  .chat-zalo .chat-icon{background:#0068ff;}
+  .chat-messenger .chat-icon{background:linear-gradient(135deg,#00b2ff,#006aff 45%,#b900e4);}
+  .chat-icon svg{width:100%;height:100%;}
+  .chat-toggle{
+    width:3.4rem;height:3.4rem;border-radius:50%;border:none;cursor:pointer;
+    background:var(--liquor);color:#fbf3e8;box-shadow:var(--shadow);
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .chat-toggle:focus-visible{outline:2px solid var(--focus);outline-offset:3px;}
+  .chat-toggle svg{width:1.5rem;height:1.5rem;position:absolute;transition:opacity .18s ease,transform .18s ease;}
+  .chat-toggle .icon-close{opacity:0;transform:rotate(-45deg) scale(.7);}
+  .chat-toggle .icon-chat{opacity:1;transform:rotate(0) scale(1);}
+  .chat-launcher.is-open .chat-toggle .icon-close{opacity:1;transform:rotate(0) scale(1);}
+  .chat-launcher.is-open .chat-toggle .icon-chat{opacity:0;transform:rotate(45deg) scale(.7);}
+  @media (max-width:520px){
+    .chat-launcher{right:1rem;bottom:1rem;}
+    .chat-btn span{display:none;}
+    .chat-btn{padding:.4rem;}
+  }
 
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
@@ -427,7 +464,7 @@
       </ul>
     </nav>
     <div class="header-actions">
-      <span class="hotline">Hotline <strong>1900&nbsp;xxxx</strong></span>
+      <span class="hotline">Hotline <strong><a href="tel:0969246989">0969.246.989</a></strong></span>
       <a class="btn btn-primary btn-sm" href="#lien-he">Đặt trà ngay</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="site-header">
         <span></span>
@@ -631,20 +668,20 @@
         <ul class="contact-list">
           <li>
             <div>
-              <b>Văn phòng Hà Nội</b>
-              Số …, đường …, quận …, Hà Nội
+              <b>Chi nhánh Hà Nội</b>
+              Tòa Vinaconex 7, 136 Hồ Tùng Mậu, phường Phú Diễn, quận Bắc Từ Liêm, TP Hà Nội
             </div>
           </li>
           <li>
             <div>
               <b>Hotline</b>
-              1900 xxxx
+              <a href="tel:0969246989">0969.246.989</a>
             </div>
           </li>
           <li>
             <div>
               <b>Email</b>
-              hello@thatluugia.vn
+              <a href="mailto:luudamudc@gmail.com">luudamudc@gmail.com</a>
             </div>
           </li>
           <li>
@@ -654,11 +691,11 @@
             </div>
           </li>
         </ul>
-        <p class="placeholder-note">* Thông tin liên hệ trên là minh hoạ — vui lòng cung cấp địa chỉ, hotline và email thật để cập nhật trước khi đăng tải chính thức.</p>
       </div>
       <div class="map-plate reveal">
         <strong>Chi nhánh Hà Nội</strong>
-        <span>Bản đồ và lối vào sẽ hiển thị tại đây khi có địa chỉ chính thức.</span>
+        <span>Tòa Vinaconex 7, 136 Hồ Tùng Mậu, phường Phú Diễn, quận Bắc Từ Liêm, TP Hà Nội</span>
+        <a class="btn btn-ghost btn-sm" style="margin-top:.8rem;align-self:flex-start;" href="https://www.google.com/maps/search/?api=1&query=T%C3%B2a%20Vinaconex%207%2C%20136%20H%E1%BB%93%20T%C3%B9ng%20M%E1%BA%ADu%2C%20Ph%C6%B0%E1%BB%9Dng%20Ph%C3%BA%20Di%E1%BB%85n%2C%20Qu%E1%BA%ADn%20B%E1%BA%AFc%20T%E1%BB%AB%20Li%C3%AAm%2C%20TP%20H%C3%A0%20N%E1%BB%99i" target="_blank" rel="noopener">Xem trên Google Maps →</a>
       </div>
     </div>
   </section>
@@ -710,6 +747,27 @@
   </div>
 </footer>
 
+<div class="chat-launcher" id="chat-launcher">
+  <div class="chat-options" id="chat-options">
+    <a class="chat-btn chat-messenger" href="https://m.me/" target="_blank" rel="noopener" aria-label="Chat qua Messenger">
+      <span class="chat-icon" aria-hidden="true">
+        <svg viewBox="0 0 36 36"><path d="M10.5 3v16.5h4.5v13.5l10.5-18h-6l6-12z" fill="#fff"/></svg>
+      </span>
+      <span>Messenger</span>
+    </a>
+    <a class="chat-btn chat-zalo" href="https://zalo.me/84969246989" target="_blank" rel="noopener" aria-label="Chat qua Zalo">
+      <span class="chat-icon" aria-hidden="true">
+        <svg viewBox="0 0 36 36"><text x="18" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">Z</text></svg>
+      </span>
+      <span>Zalo</span>
+    </a>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-expanded="false" aria-controls="chat-options" aria-label="Mở khung chat">
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
 <script>
   (function(){
     var header = document.getElementById('site-header');
@@ -724,6 +782,15 @@
           header.classList.remove('nav-open');
           toggle.setAttribute('aria-expanded', 'false');
         });
+      });
+    }
+
+    var launcher = document.getElementById('chat-launcher');
+    var chatToggle = document.getElementById('chat-toggle');
+    if (chatToggle) {
+      chatToggle.addEventListener('click', function(){
+        var open = launcher.classList.toggle('is-open');
+        chatToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
 
