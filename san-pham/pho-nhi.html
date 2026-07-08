@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phổ Nhĩ — Trà Thất Lưu Gia</title>
+<meta name="description" content="Trà Phổ Nhĩ Lưu Gia — ủ lên men từ búp trà cổ thụ Hà Giang, nước hổ phách sẫm, đậm mà không gắt, hậu vị ngọt sâu.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍃</text></svg>">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .breadcrumb{font-size:.8rem;color:var(--text-soft);padding:1.2rem 0 0;}
+  .breadcrumb a{color:var(--text-soft);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--accent);}
+
+  .pdp{padding:1.6rem 0 4rem;}
+  .pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.2rem;align-items:start;}
+
+  .gallery-main{
+    aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;background:#2c2117;
+    box-shadow:var(--shadow);position:relative;cursor:zoom-in;
+  }
+  .gallery-main svg{width:100%;height:100%;transition:transform .35s ease;}
+  .gallery-main:hover svg{transform:scale(1.12);}
+  .gallery-thumbs{display:flex;gap:.7rem;margin-top:.8rem;}
+  .gallery-thumb{
+    width:4.6rem;height:4.6rem;border-radius:var(--radius);overflow:hidden;background:#2c2117;
+    border:2px solid transparent;cursor:pointer;padding:0;
+  }
+  .gallery-thumb.is-active{border-color:var(--accent);}
+  .gallery-thumb svg{width:100%;height:100%;}
+
+  .pdp-info h1{font-size:clamp(1.8rem,1.5rem + 1.4vw,2.5rem);}
+  .stars{color:#D4A24C;font-size:1rem;letter-spacing:.1em;}
+  .rating-row{display:flex;align-items:center;gap:.6rem;margin-top:.5rem;font-size:.85rem;color:var(--text-soft);}
+
+  .tasting{margin-top:1.6rem;display:flex;flex-direction:column;gap:.6rem;}
+  .tasting-row{display:grid;grid-template-columns:5rem 1fr;align-items:center;gap:.8rem;font-size:.82rem;color:var(--text-soft);}
+  .tasting-bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;}
+  .tasting-fill{height:100%;background:var(--accent);border-radius:99px;}
+
+  .price-block{display:flex;align-items:baseline;gap:.8rem;margin-top:1.6rem;}
+  .price-block .price-now{font-family:"Site Heading",serif;font-size:2rem;font-weight:600;color:var(--wood);}
+
+  .weight-select{display:flex;gap:.6rem;margin-top:1rem;}
+  .weight-opt{
+    border:1px solid var(--line);border-radius:var(--radius);padding:.6em 1.1em;
+    background:var(--card);cursor:pointer;font-size:.88rem;font-weight:600;
+  }
+  .weight-opt.is-active{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb, var(--accent) 8%, var(--card));}
+
+  .pdp-actions{display:flex;gap:.8rem;margin-top:1.6rem;}
+  .pdp-actions .btn{flex:1;}
+
+  .ritual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.5rem;}
+  .ritual-item{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1rem;}
+  .ritual-item .ritual-ico{font-size:1.6rem;margin-bottom:.5rem;}
+  .ritual-item b{display:block;font-family:"Site Heading",serif;font-size:1.15rem;color:var(--wood);}
+  .ritual-item span{font-size:.78rem;color:var(--text-soft);}
+
+  .origin-block{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+  .origin-art{aspect-ratio:4/3;border-radius:var(--radius);background:linear-gradient(160deg,#4a5c3f,#2c3524);box-shadow:var(--shadow);}
+
+  .review{border-top:1px solid var(--line);padding:1.4rem 0;display:flex;gap:1rem;}
+  .review .avatar{width:2.4rem;height:2.4rem;border-radius:50%;background:color-mix(in srgb, var(--accent) 15%, var(--card));color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Site Heading",serif;font-weight:600;flex-shrink:0;}
+  .review-name{font-weight:600;font-size:.92rem;}
+  .review-stars{color:#D4A24C;font-size:.85rem;}
+  .review p{color:var(--text-soft);font-size:.9rem;margin-top:.4rem;}
+
+  @media (max-width:900px){
+    .pdp-grid{grid-template-columns:1fr;}
+    .ritual-grid{grid-template-columns:repeat(2,1fr);}
+    .origin-block{grid-template-columns:1fr;}
+    .pdp{padding-bottom:6rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-inner">
+    <ul class="nav-links">
+      <li><a href="../index.html#san-pham">Trà Phẩm</a></li>
+      <li><a href="../chuyen-luu-gia.html">Câu Chuyện</a></li>
+      <li><a href="../cam-nang-tra-chau-a.html">Trải Nghiệm</a></li>
+    </ul>
+    <a class="brand-lockup" href="../index.html">
+      <svg class="brandmark" viewBox="0 0 120 120" role="img" aria-label="Biểu trưng Trà Thất Lưu Gia">
+        <circle cx="60" cy="60" r="55" fill="none" stroke="#5C4033" stroke-width="2"/>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="#5C4033" stroke-width="0.75" opacity="0.5"/>
+        <path d="M35 82 Q60 76 85 82" fill="none" stroke="#5C4033" stroke-width="1.25" opacity="0.65"/>
+        <path d="M60 78 C48 78 40 66 44 52 C47 40 58 32 66 34 C78 37 82 52 74 65 C70 71 65 76 60 78 Z" fill="#557A46"/>
+        <path d="M60 76 C58 64 58 50 63 38" fill="none" stroke="#F9F6F0" stroke-width="1.1" opacity="0.85"/>
+        <path d="M52 32 Q46 22 54 14" fill="none" stroke="#5C4033" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M68 32 Q74 22 66 12" fill="none" stroke="#5C4033" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span><span class="brand-name">Lưu Gia</span><span class="brand-tag">Trà Thất Lưu Gia</span></span>
+    </a>
+    <div class="header-actions">
+      <a class="icon-btn" href="tel:0969246989" aria-label="Gọi hotline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L7.9 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.7 2z"/></svg></a>
+      <button class="icon-btn" data-open-cart aria-label="Mở giỏ hàng">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/></svg>
+        <span class="cart-count">0</span>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Mở menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap breadcrumb"><a href="../index.html">Trang chủ</a> / <a href="../index.html#san-pham">Trà Phẩm</a> / Phổ Nhĩ</div>
+
+<main class="pdp">
+  <div class="wrap pdp-grid">
+
+    <!-- GALLERY -->
+    <div>
+      <div class="gallery-main" id="gallery-main">
+        <svg viewBox="0 0 300 300" data-img="pack"><rect width="300" height="300" fill="#3a2a1f"/><rect x="70" y="60" width="160" height="190" rx="8" fill="#2c2117" stroke="#8A6A57" stroke-width="2"/><circle cx="150" cy="130" r="30" fill="none" stroke="#557A46" stroke-width="2"/><path d="M150 148C138 148 130 137 133 125C135 115 144 108 150 110C160 113 163 124 156 135C153 141 151 147 150 148Z" fill="#557A46"/><text x="150" y="205" text-anchor="middle" fill="#EDE6D3" font-family="Georgia,serif" font-size="20">Phổ Nhĩ</text><text x="150" y="228" text-anchor="middle" fill="#B9A98E" font-family="Arial" font-size="11" letter-spacing="2">LƯU GIA</text></svg>
+      </div>
+      <div class="gallery-thumbs">
+        <button class="gallery-thumb is-active" data-target="pack" aria-label="Ảnh bao bì">
+          <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#3a2a1f"/><rect x="28" y="18" width="44" height="64" rx="4" fill="#2c2117" stroke="#8A6A57" stroke-width="1.5"/></svg>
+        </button>
+        <button class="gallery-thumb" data-target="leaf" aria-label="Ảnh cánh trà khô">
+          <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#C9B08A"/><path d="M20 60 L80 60" stroke="#7a5f3d" stroke-width="3" stroke-linecap="round"/><circle cx="35" cy="55" r="5" fill="#3a2a1f"/><circle cx="50" cy="52" r="5" fill="#4a3628"/><circle cx="64" cy="56" r="5" fill="#3a2a1f"/></svg>
+        </button>
+        <button class="gallery-thumb" data-target="cup" aria-label="Ảnh chén trà pha">
+          <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#20180f"/><ellipse cx="50" cy="60" rx="30" ry="8" fill="#8B3A2B"/><path d="M20 60 Q20 78 50 82 Q80 78 80 60" fill="#8B3A2B"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="pdp-info">
+      <span class="eyebrow">Dòng trà lên men hậu kỳ</span>
+      <h1 style="margin-top:.6rem;">Phổ Nhĩ Lưu Gia</h1>
+      <div class="rating-row"><span class="stars">★★★★★</span> 4.8 · 126 đánh giá</div>
+      <p class="lede" style="margin-top:1rem;">Ủ lên men theo thời gian từ búp trà cổ thụ vùng cao Hà Giang. Nước trà màu hổ phách sẫm, đậm mà không gắt, hậu vị ngọt sâu bền — hợp nhâm nhi buổi tối hoặc sau bữa nhiều dầu mỡ.</p>
+
+      <div class="tasting">
+        <div class="tasting-row"><span>Chát</span><div class="tasting-bar"><div class="tasting-fill" style="width:40%"></div></div></div>
+        <div class="tasting-row"><span>Ngọt hậu</span><div class="tasting-bar"><div class="tasting-fill" style="width:75%"></div></div></div>
+        <div class="tasting-row"><span>Hương thơm</span><div class="tasting-bar"><div class="tasting-fill" style="width:65%"></div></div></div>
+        <div class="tasting-row"><span>Độ đậm</span><div class="tasting-bar"><div class="tasting-fill" style="width:85%"></div></div></div>
+      </div>
+
+      <div class="price-block">
+        <span class="price-now" id="pdp-price">189.000₫</span>
+        <span style="font-size:.82rem;color:var(--text-soft);">/ gói</span>
+      </div>
+
+      <div class="weight-select" role="radiogroup" aria-label="Chọn khối lượng">
+        <button class="weight-opt is-active" data-weight="100g" data-price="189000">100g</button>
+        <button class="weight-opt" data-weight="200g" data-price="349000">200g</button>
+        <button class="weight-opt" data-weight="500g" data-price="799000">500g</button>
+      </div>
+
+      <div class="pdp-actions" id="pdp-main-cta">
+        <button class="btn btn-outline btn-wide" data-add-cart data-id="pho-nhi" data-name="Phổ Nhĩ" data-price="189000">Thêm Vào Giỏ</button>
+        <a class="btn btn-primary btn-wide" href="https://zalo.me/84969246989" target="_blank" rel="noopener">Mua Ngay</a>
+      </div>
+      <p style="font-size:.78rem;color:var(--text-soft);margin-top:.8rem;">* Giá tham khảo, chưa gồm phí vận chuyển. Lưu Gia xác nhận đơn và gửi thanh toán qua Zalo/chuyển khoản QR.</p>
+    </div>
+  </div>
+
+  <!-- RITUAL -->
+  <section class="wrap section-head reveal" style="margin-top:4rem;">
+    <span class="eyebrow">Hướng dẫn pha chuẩn</span>
+    <h2>The Ritual — Nghi thức pha Phổ Nhĩ</h2>
+  </section>
+  <div class="wrap ritual-grid reveal">
+    <div class="ritual-item"><div class="ritual-ico">🌡️</div><b>95–100°C</b><span>Nhiệt độ nước</span></div>
+    <div class="ritual-item"><div class="ritual-ico">🍃</div><b>5g</b><span>Lượng trà</span></div>
+    <div class="ritual-item"><div class="ritual-ico">💧</div><b>150ml</b><span>Lượng nước</span></div>
+    <div class="ritual-item"><div class="ritual-ico">⏱️</div><b>3–5 phút</b><span>Thời gian hãm</span></div>
+  </div>
+  <p class="wrap lede reveal" style="margin-top:1rem;">Bí quyết: tráng trà thật kỹ bằng nước sôi ở nước đầu để đánh thức lá trà lâu năm, sau đó hãm nhanh 10–15 giây cho các tuần nước tiếp theo. Dùng ấm Tử Sa hoặc ấm đất nung sẽ giữ trọn vị.</p>
+
+  <!-- ORIGIN -->
+  <section class="wrap section-head reveal" style="margin-top:4rem;">
+    <span class="eyebrow">Nguồn gốc</span>
+    <h2>The Origin — Từ đồi chè cổ thụ Hà Giang</h2>
+  </section>
+  <div class="wrap origin-block reveal">
+    <div class="origin-art" aria-hidden="true"></div>
+    <p style="color:var(--text-soft);">Gói Phổ Nhĩ này được làm từ búp trà của những cây chè cổ thụ hàng trăm năm tuổi trên các triền núi Hà Giang — nơi quanh năm sương phủ, đất đá vôi giữ ẩm tự nhiên cho gốc trà. Sau khi hái tay, trà được sao diệt men, phơi và ủ lên men hậu kỳ theo bí quyết riêng của Lưu Gia trước khi ép nhẹ và đóng gói kín khí, giữ trọn vị đất và gỗ mục đặc trưng của dòng trà lên men.</p>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="wrap section-head reveal" style="margin-top:4rem;">
+    <span class="eyebrow">Đánh giá của khách hàng</span>
+    <h2>Người thưởng trà nói gì</h2>
+  </section>
+  <div class="wrap reveal">
+    <div class="review">
+      <div class="avatar">M</div>
+      <div><div class="review-name">Anh Minh</div><div class="review-stars">★★★★★</div><p>Hãm được rất nhiều nước mà vẫn giữ vị, hợp pha ấm lớn đãi khách dịp Tết.</p></div>
+    </div>
+    <div class="review">
+      <div class="avatar">H</div>
+      <div><div class="review-name">Chị Hạnh</div><div class="review-stars">★★★★★</div><p>Vị đậm nhưng không gắt như mấy loại Phổ Nhĩ mình từng uống, hậu ngọt rất bền.</p></div>
+    </div>
+    <div class="review">
+      <div class="avatar">Đ</div>
+      <div><div class="review-name">Anh Đức</div><div class="review-stars">★★★★☆</div><p>Đóng gói kỹ, trà tới nơi vẫn thơm. Mong Lưu Gia ra thêm bánh trà nén để dành lâu.</p></div>
+    </div>
+  </div>
+</main>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <span class="price" id="sticky-price">189.000₫</span>
+  <a class="btn btn-primary btn-wide" href="https://zalo.me/84969246989" target="_blank" rel="noopener">Mua Ngay</a>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="brand-lockup" href="../index.html">
+          <svg class="brandmark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="55" fill="none" stroke="#8A6A57" stroke-width="2"/><path d="M60 78 C48 78 40 66 44 52 C47 40 58 32 66 34 C78 37 82 52 74 65 C70 71 65 76 60 78 Z" fill="#6B8E23"/></svg>
+          <span><span class="brand-name">Lưu Gia</span><span class="brand-tag">Trà Thất Lưu Gia</span></span>
+        </a>
+        <p class="footer-tagline">Trà hái tay, sao ủ thủ công, gìn giữ vị nguyên bản.</p>
+      </div>
+      <div class="footer-col"><h4>Khám phá</h4><ul>
+        <li><a href="../index.html#san-pham">Trà Phẩm</a></li>
+        <li><a href="../chuyen-luu-gia.html">Chuyện Lưu Gia</a></li>
+        <li><a href="../cam-nang-tra-chau-a.html">Cẩm nang trà</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Liên hệ</h4><ul>
+        <li>Tòa Vinaconex 7, 136 Hồ Tùng Mậu, Hà Nội</li>
+        <li><a href="tel:0969246989">0969.246.989</a></li>
+        <li><a href="mailto:luudamudc@gmail.com">luudamudc@gmail.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Trà Thất Lưu Gia.</span></div>
+  </div>
+</footer>
+
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Giỏ hàng">
+  <div class="cart-drawer-head"><h3>Giỏ hàng của bạn</h3>
+    <button class="icon-btn" data-close-cart aria-label="Đóng giỏ hàng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <div style="display:flex;justify-content:space-between;font-weight:600;"><span>Tạm tính</span><span id="cart-total">0₫</span></div>
+    <p class="cart-note">Lưu Gia chưa hỗ trợ thanh toán trực tuyến — Lão Lưu sẽ liên hệ qua Zalo/hotline để xác nhận.</p>
+    <a class="btn btn-primary btn-wide" href="https://zalo.me/84969246989" target="_blank" rel="noopener">Đặt hàng qua Zalo</a>
+  </div>
+</div>
+
+<div class="chat-launcher" id="chat-launcher">
+  <div class="chat-options" id="chat-options">
+    <a class="chat-btn chat-messenger" href="https://m.me/Tinhtamtra1109" target="_blank" rel="noopener" aria-label="Chat qua Messenger">
+      <span class="chat-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M10.5 3v16.5h4.5v13.5l10.5-18h-6l6-12z" fill="#fff"/></svg></span><span>Messenger</span>
+    </a>
+    <a class="chat-btn chat-zalo" href="https://zalo.me/84969246989" target="_blank" rel="noopener" aria-label="Chat qua Zalo">
+      <span class="chat-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><text x="18" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">Z</text></svg></span><span>Zalo</span>
+    </a>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" aria-expanded="false" aria-label="Mở khung chat">
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<script src="../assets/site.js"></script>
+<script>
+  (function(){
+    var thumbs = document.querySelectorAll('.gallery-thumb');
+    var main = document.getElementById('gallery-main');
+    var scenes = {
+      pack: main.querySelector('svg').outerHTML,
+      leaf: '<svg viewBox="0 0 300 300" data-img="leaf"><rect width="300" height="300" fill="#C9B08A"/><path d="M60 180 L240 180" stroke="#7a5f3d" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="165" r="14" fill="#3a2a1f"/><circle cx="150" cy="158" r="15" fill="#4a3628"/><circle cx="192" cy="168" r="14" fill="#3a2a1f"/><text x="150" y="250" text-anchor="middle" fill="#5c4033" font-family="Georgia,serif" font-size="16">Cánh trà khô trên muỗng tre</text></svg>',
+      cup: '<svg viewBox="0 0 300 300" data-img="cup"><rect width="300" height="300" fill="#20180f"/><ellipse cx="150" cy="170" rx="90" ry="20" fill="#8B3A2B"/><path d="M60 170 Q60 235 150 245 Q240 235 240 170" fill="#8B3A2B"/><ellipse cx="150" cy="170" rx="90" ry="20" fill="none" stroke="#C9B08A" stroke-width="1.5" opacity=".6"/><text x="150" y="270" text-anchor="middle" fill="#C9B08A" font-family="Georgia,serif" font-size="16">Nước trà hổ phách sẫm</text></svg>'
+    };
+    thumbs.forEach(function(t){
+      t.addEventListener('click', function(){
+        thumbs.forEach(function(x){ x.classList.remove('is-active'); });
+        t.classList.add('is-active');
+        main.innerHTML = scenes[t.getAttribute('data-target')];
+      });
+    });
+
+    var weightBtns = document.querySelectorAll('.weight-opt');
+    var priceEl = document.getElementById('pdp-price');
+    var stickyPriceEl = document.getElementById('sticky-price');
+    var mainCartBtn = document.querySelector('#pdp-main-cta [data-add-cart]');
+    function fmt(n){ return parseInt(n,10).toLocaleString('vi-VN') + '₫'; }
+    weightBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        weightBtns.forEach(function(x){ x.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        var price = b.getAttribute('data-price');
+        priceEl.textContent = fmt(price);
+        if (stickyPriceEl) stickyPriceEl.textContent = fmt(price);
+        if (mainCartBtn) {
+          mainCartBtn.setAttribute('data-price', price);
+          mainCartBtn.setAttribute('data-name', 'Phổ Nhĩ ' + b.getAttribute('data-weight'));
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
